@@ -7,11 +7,11 @@ public class Client {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Address ad = new Address("Laagveld","Nieuw-Vennep",2151,"Netherlands");
+		Address ad = new Address("ABCStreet","ABCCity",1234,"ABCCountry");
 		Employee emp = new Employee();
 		
 		emp.setEid(1001);
-		emp.setEname("Nitesh Kumar");
+		emp.setEname("ABC Ename");
 		emp.setEsalary(64000);
 		emp.setAdrs(ad);
 		

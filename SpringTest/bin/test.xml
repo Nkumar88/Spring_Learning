@@ -7,14 +7,14 @@
 
 
 	<bean id="address" class="nk.pkg1.Address">
-		<property name="streetName" value="Laagveld" />
-		<property name="city" value="Nieuw-Vennep" />
-		<property name="zipCode" value="2151" />
-		<property name="country" value="Netherlands" />
+		<property name="streetName" value="ABCStreet" />
+		<property name="city" value="ABCCity" />
+		<property name="zipCode" value="1234" />
+		<property name="country" value="ABCCountry" />
 	</bean>
 
 	<bean id="employee" class="nk.pkg1.Employee">
-		<property name="ename" value="Nitesh Kumar" />
+		<property name="ename" value="ABC Ename" />
 		<property name="eid" value="1001" />
 		<property name="esalary" value="64000" />
 		<constructor-arg ref="address" />
