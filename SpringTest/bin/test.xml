@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="address" class="nk.pkg1.Address">
+		<property name="streetName" value="Laagveld" />
+		<property name="city" value="Nieuw-Vennep" />
+		<property name="zipCode" value="2151" />
+		<property name="country" value="Netherlands" />
+	</bean>
+
+	<bean id="employee" class="nk.pkg1.Employee">
+		<property name="ename" value="Nitesh Kumar" />
+		<property name="eid" value="1001" />
+		<property name="esalary" value="64000" />
+		<constructor-arg ref="address" />
+	</bean>
+</beans>
