@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><customers auto_incremented_id="107">
+<?xml version="1.0" encoding="UTF-8" ?>
+<customers auto_incremented_id="106">
 	<customer>
 		<cid>101</cid>
 		<firstName>Alex</firstName>
@@ -28,7 +29,7 @@
 		<firstName>Alex</firstName>
 		<lastName>Verghese</lastName>
 		<cityId>3</cityId>
-	<customer><cid>106</cid><firstName>Rishabh</firstName><lastName>Pant</lastName><cityId>1</cityId></customer></customer>
+	</customer>
 	<cities>
 		<city>
 			<id>1</id>
