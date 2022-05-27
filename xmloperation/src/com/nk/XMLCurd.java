@@ -186,20 +186,13 @@ public class XMLCurd {
 			customerElement.appendChild(firstNameElement);
 			customerElement.appendChild(lastNameElement);
 			customerElement.appendChild(cityIdElement);
-			Element ele = (Element) customersList.item(customersList.getLength()-1);
-			//System.out.println(customersList.item(customersList.getLength()-1).getParentNode());
-			for(int i=0; i<customersList.getLength();i++)
-			{
-				Node node = customersList.item(i);
-				Element elem = (Element) node;
-				//System.out.println(elem.appendChild(customerElement));
-			}
+			root.appendChild(customerElement);
 			
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			//transformerFactory.setAttribute("indent-number", 4);
+			transformerFactory.setAttribute("indent-number", 4);
 			Transformer tf = transformerFactory.newTransformer();			
             tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-            //tf.setOutputProperty(OutputKeys.INDENT, "yes");
+            tf.setOutputProperty(OutputKeys.INDENT, "yes");
 //			tf.setOutputProperty(OutputKeys.METHOD, "xml");
 			
 			DOMSource ds = new DOMSource(doc);
