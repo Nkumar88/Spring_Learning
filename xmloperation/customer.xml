@@ -1,43 +1,67 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<customers auto_incremented_id="106">
-	<customer>
-		<cid>101</cid>
-		<firstName>Alex</firstName>
-		<lastName>Doner</lastName>
-		<cityId>1</cityId>
-	</customer>
-	<customer>
-		<cid>102</cid>
-		<firstName>Sandra</firstName>
-		<lastName>Peter</lastName>
-		<cityId>3</cityId>
-	</customer>
-	<customer>
-		<cid>103</cid>
-		<firstName>Sandra</firstName>
-		<lastName>Roger</lastName>
-		<cityId>3</cityId>
-	</customer>
-	<customer>
-		<cid>104</cid>
-		<firstName>Krish</firstName>
-		<lastName>Pathak</lastName>
-		<cityId>1</cityId>
-	</customer>
-	<customer>
-		<cid>105</cid>
-		<firstName>Alex</firstName>
-		<lastName>Verghese</lastName>
-		<cityId>3</cityId>
-	</customer>
-	<cities>
-		<city>
-			<id>1</id>
-			<name>Kanpur</name>
-		</city>
-		<city>
-			<id>3</id>
-			<name>Durg</name>
-		</city>
-	</cities>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<customers auto_incremented_id="113">
+<customer>
+<cid>101</cid>
+<firstName>Alex</firstName>
+<lastName>Doner</lastName>
+<cityId>1</cityId>
+</customer>
+<customer>
+<cid>102</cid>
+<firstName>Sandra</firstName>
+<lastName>Peter</lastName>
+<cityId>3</cityId>
+</customer>
+<customer>
+<cid>103</cid>
+<firstName>Sandra</firstName>
+<lastName>Roger</lastName>
+<cityId>3</cityId>
+</customer>
+<customer>
+<cid>104</cid>
+<firstName>Krish</firstName>
+<lastName>Pathak</lastName>
+<cityId>1</cityId>
+</customer>
+<customer>
+<cid>105</cid>
+<firstName>Alex</firstName>
+<lastName>Verghese</lastName>
+<cityId>3</cityId>
+</customer>
+<customer>
+<cid>109</cid>
+<firstName>Rishabh</firstName>
+<lastName>Pant</lastName>
+<cityId>3</cityId>
+</customer>
+<customer>
+<cid>110</cid>
+<firstName>Virat</firstName>
+<lastName>Kohli</lastName>
+<cityId>3</cityId>
+</customer>
+<customer>
+<cid>111</cid>
+<firstName>Jos</firstName>
+<lastName>Buttler</lastName>
+<cityId>1</cityId>
+</customer>
+<customer>
+<cid>112</cid>
+<firstName>Hardik</firstName>
+<lastName>Pandya</lastName>
+<cityId>3</cityId>
+</customer>
+<cities>
+<city>
+<id>1</id>
+<name>Kanpur</name>
+</city>
+<city>
+<id>3</id>
+<name>Durg</name>
+</city>
+</cities>
 </customers>
