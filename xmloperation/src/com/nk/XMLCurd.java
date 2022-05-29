@@ -54,18 +54,39 @@ public class XMLCurd {
 		try {
 			Path path = Path.of("customer.xml");
 			String text = Files.readString(path);
-			String newLine = System.getProperty("line.separator");
+			//String newLine = System.getProperty("line.separator");
 			
-			String newText = text.replaceAll("\n", "").replaceAll("\r", "").replaceAll("\t", "");
-			newText.trim().strip();
-			boolean hasNewLine = newText.contains(newLine);
-			System.out.println("text = "+newText);
-			System.out.println("Newlines?"+hasNewLine);
+			String newText = text.replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "");
+			//newText.trim().strip();
+			//boolean hasNewLine = newText.contains(newLine);
+			//System.out.println("text = "+newText);
+			//System.out.println("Newlines?"+hasNewLine);
 
 			FileWriter writer = new FileWriter("customer.xml");
 			writer.write(newText);
 			writer.close();
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateXml(Document doc)
+	{
+		try
+		{
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			transformerFactory.setAttribute("indent-number", 0);
+			Transformer tf = transformerFactory.newTransformer();
+			tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+			tf.setOutputProperty(OutputKeys.INDENT, "yes");
+
+			DOMSource ds = new DOMSource(doc);
+			StreamResult sr = new StreamResult("customer.xml");
+
+			tf.transform(ds, sr);
+			
+		}catch(Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
@@ -200,17 +221,7 @@ public class XMLCurd {
 
 			root.insertBefore(customerElement, doc.getElementsByTagName("cities").item(0));
 
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			transformerFactory.setAttribute("indent-number", 0);
-			Transformer tf = transformerFactory.newTransformer();
-			tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-			tf.setOutputProperty(OutputKeys.INDENT, "yes");
-			tf.setOutputProperty(OutputKeys.METHOD, "xml");
-
-			DOMSource ds = new DOMSource(doc);
-			StreamResult sr = new StreamResult("customer.xml");
-
-			tf.transform(ds, sr);
+			updateXml(doc);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -219,11 +230,102 @@ public class XMLCurd {
 
 	public void updateCustomer(String id, String firstName, String lastName, String cityId)
 	{
-		
+		boolean customerUpdated = false;
+		try
+		{
+			if(!getCityList().containsKey(cityId))
+			{
+				System.out.println("Update: Invalid cityId.");
+				System.exit(0);
+			}
+			
+			formatCustomerFile();
+			File file = new File("customer.xml");
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			Document doc = builder.parse(file);
+			doc.normalize();
+			
+			NodeList custList = doc.getElementsByTagName("customer");
+			for(int i=0; i<custList.getLength(); i++)
+			{
+				Node cNode = custList.item(i);
+				if(cNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					Element ele = (Element) cNode;
+					if(ele.getElementsByTagName("cid").item(0).getTextContent().equals(id))
+					{
+						ele.getElementsByTagName("firstName").item(0).setTextContent(firstName);
+						ele.getElementsByTagName("lastName").item(0).setTextContent(lastName);
+						ele.getElementsByTagName("cityId").item(0).setTextContent(cityId);
+						customerUpdated = true;
+						break;
+					}
+				}
+			}
+			
+
+			if(!customerUpdated)
+			{
+				System.out.println("Update: Customer not found");
+			}
+			else
+			{
+				System.out.println("Update: Customer updated");
+			}
+			
+			updateXml(doc);
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public void deleteCustomer(String id)
 	{
-		
+		boolean customerDeleted = false;
+		try
+		{
+			formatCustomerFile();
+			File file = new File("customer.xml");
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			Document doc = builder.parse(file);
+			doc.normalize();
+			Element root = doc.getDocumentElement();
+			
+			NodeList custList = doc.getElementsByTagName("customer");
+			for(int i=0; i<custList.getLength(); i++)
+			{
+				Node cNode = custList.item(i);
+				if(cNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					Element ele = (Element) cNode;
+					if(ele.getElementsByTagName("cid").item(0).getTextContent().equals(id))
+					{
+						root.removeChild(ele);
+						customerDeleted = true;
+						break;
+					}
+				}
+			}
+			
+			if(!customerDeleted)
+			{
+				System.out.println("Delete: Customer not found");
+			}
+			else
+			{
+				System.out.println("Delete: Customer deleted");
+			}
+			
+			updateXml(doc);
+			
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 }

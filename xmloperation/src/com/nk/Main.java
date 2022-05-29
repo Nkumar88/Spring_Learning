@@ -13,12 +13,14 @@ public class Main {
 		System.out.println(xmlops.getCustomerByFirstName("Sandra"));
 		System.out.println(xmlops.getAllCustomer());
 		Customer cus = new Customer();
-		cus.setId("106");
-		cus.setFirstName("Rishabh");
-		cus.setLastName("Pant");
-		cus.setCity("1");
+		cus.setId("0");
+		cus.setFirstName("Hardik");
+		cus.setLastName("Pandya");
+		cus.setCity("3");
 		
-		xmlops.createCustomer(cus);
+		//xmlops.createCustomer(cus);
+		//xmlops.deleteCustomer("108");
+		xmlops.updateCustomer("110", "Virat", "Kohli", "4");
 	}
 
 }
